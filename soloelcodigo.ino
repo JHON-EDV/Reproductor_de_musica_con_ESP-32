@@ -162,12 +162,6 @@ void setup(){
 
 void reproducir(uint8_t counter, char tecla){
     for(int i=0;i<661488;i++){           
-      while(playpausa == 0){
-        if(menu==1){break;}
-        if(millis()-rebote>300){
-          tecla='0';
-          attachInterrupt(digitalPinToInterrupt(F0),Int_F0,FALLING); //Habilita nuevamente int. de la F0
-        }
         dacWrite(DAC1,(miscanciones[counter])[i]);
         delayMicroseconds(38);    //36
         //Se imprime unicamente en datos exactos para no sobrecargar el procesador
@@ -181,8 +175,8 @@ void reproducir(uint8_t counter, char tecla){
           tft.fillRect(19, 90, i/7350, 5, WHITE); 
         }
       }
-    } 
-  }    
+  } 
+      
 
 
 void volum(uint16_t vol,uint16_t tm){
